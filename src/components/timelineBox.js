@@ -10,9 +10,7 @@ import './timelineBox.css';
 
 export default function TimelineBox(props) {
 
-	let comprasOrdenadas = sortEvents(props.finalPurchases);
-
-	let compras = comprasOrdenadas.map(p => {
+	let compras = props.finalPurchases.map(p => {
 		return {
 			date: new Date(p.timestamp).toLocaleDateString(),
 			time: new Date(p.timestamp).toLocaleTimeString(),
@@ -63,12 +61,6 @@ export default function TimelineBox(props) {
 	)
 
 	return timelineBox;
-}
-
-function sortEvents(events) {
-	return events.sort((a, b) => {
-  		return new Date(b.timestamp) - new Date(a.timestamp)
-	});
 }
 
 function formatarRevenue(revenue) {
